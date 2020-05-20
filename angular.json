@@ -104,10 +104,12 @@
   "schematics": {
     "@nrwl/angular:application": {
       "unitTestRunner": "karma",
-      "e2eTestRunner": "none"
+      "e2eTestRunner": "none",
+      "style": "scss"
     },
     "@nrwl/angular:library": {
-      "unitTestRunner": "karma"
+      "unitTestRunner": "karma",
+      "style": "scss"
     }
   },
   "defaultProject": "play"
