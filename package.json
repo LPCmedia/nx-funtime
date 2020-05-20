@@ -25,7 +25,9 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
+    "postversion": "npm run affected:build",
+    "publish:libs": "lerna publish"
   },
   "private": true,
   "dependencies": {
@@ -51,6 +53,8 @@
     "@types/jasmine": "~2.8.8",
     "@types/node": "~8.9.4",
     "codelyzer": "~5.0.1",
+    "commitizen": "^4.1.2",
+    "cz-conventional-changelog": "3.2.0",
     "dotenv": "6.2.0",
     "eslint": "6.8.0",
     "jasmine-core": "~2.99.1",
@@ -64,5 +68,10 @@
     "ts-node": "~7.0.0",
     "tslint": "~6.0.0",
     "typescript": "~3.8.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
