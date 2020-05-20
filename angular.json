@@ -96,6 +96,37 @@
           }
         }
       }
+    },
+    "mylibrary": {
+      "projectType": "library",
+      "root": "libs/mylibrary",
+      "sourceRoot": "libs/mylibrary/src",
+      "prefix": "activia",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/mylibrary/tsconfig.lib.json",
+              "libs/mylibrary/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/mylibrary/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/mylibrary/src/test.ts",
+            "tsConfig": "libs/mylibrary/tsconfig.spec.json",
+            "karmaConfig": "libs/mylibrary/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {
