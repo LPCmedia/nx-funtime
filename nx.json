@@ -24,6 +24,9 @@
     },
     "mylibrary": {
       "tags": []
+    },
+    "my-core": {
+      "tags": []
     }
   }
 }

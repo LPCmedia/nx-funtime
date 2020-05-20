@@ -10,7 +10,6 @@ export class TodosComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    alert('todo');
   }
 
 }
