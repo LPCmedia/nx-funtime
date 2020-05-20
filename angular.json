@@ -1,6 +1,103 @@
 {
   "version": 1,
-  "projects": {},
+  "projects": {
+    "play": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/play",
+      "sourceRoot": "apps/play/src",
+      "prefix": "activia",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/play",
+            "index": "apps/play/src/index.html",
+            "main": "apps/play/src/main.ts",
+            "polyfills": "apps/play/src/polyfills.ts",
+            "tsConfig": "apps/play/tsconfig.app.json",
+            "aot": true,
+            "assets": ["apps/play/src/favicon.ico", "apps/play/src/assets"],
+            "styles": ["apps/play/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/play/src/environments/environment.ts",
+                  "with": "apps/play/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "play:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "play:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "play:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/play/tsconfig.app.json",
+              "apps/play/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/play/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/play/src/test.ts",
+            "tsConfig": "apps/play/tsconfig.spec.json",
+            "karmaConfig": "apps/play/karma.conf.js",
+            "polyfills": "apps/play/src/polyfills.ts",
+            "styles": [],
+            "scripts": [],
+            "assets": []
+          }
+        }
+      }
+    }
+  },
   "cli": {
     "defaultCollection": "@nrwl/angular"
   },
@@ -12,5 +109,6 @@
     "@nrwl/angular:library": {
       "unitTestRunner": "karma"
     }
-  }
+  },
+  "defaultProject": "play"
 }
